@@ -25,15 +25,10 @@ function formatDate(timestamp) {
 //
 function displayForecast() {
   let forecastElement = document.querySelector("#forecast");
+  let days = ["Tue", "Wed", "Thur", "Fri", "Sat"];
   //
   let forecastHTML = `<div class="row">`;
-  //
-  //
-  let days = ["Tue", "Wed", "Thur", "Fri", "Sat"];
-
   days.forEach(function (day) {
-    //
-
     forecastHTML =
       forecastHTML +
       ` 
@@ -57,6 +52,14 @@ function displayForecast() {
   forecastElement.innerHTML = forecastHTML;
 }
 //
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "b1a8336ff1e05b64da5625e4158fbea3";
+  let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(displayForecast);
+}
 //end forecast script
 function displayTemperature(response) {
   console.log(response.data);
@@ -78,6 +81,8 @@ function displayTemperature(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   celciusTemperature = response.data.main.temp;
+  //
+  getForecast(response.data.coord);
 }
 
 function handleSubmit(event) {
@@ -87,7 +92,10 @@ function handleSubmit(event) {
 }
 
 function search(city) {
-  let apiKey = "f1eac4a368d3b697e5d93c0ab2e3fcbc";
+  let apiKey = "b1a8336ff1e05b64da5625e4158fbea3";
+  //72bb9dab46b9ec3d65f423c63f27a9b8
+  //f1eac4a368d3b697e5d93c0ab2e3fcbc//
+
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
   axios.get(apiUrl).then(displayTemperature);
@@ -114,10 +122,11 @@ let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
 let celciusTemperature = null;
-displayForecast();
 
 let farenheitLink = document.querySelector("#farenheit");
 farenheitLink.addEventListener("click", displayFarenheitTemperature);
 
 let celciusLink = document.querySelector("#celcius");
 celciusLink.addEventListener("click", displayCelciusTemperature);
+
+displayForecast();
