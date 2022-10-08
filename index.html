@@ -18,59 +18,60 @@
   </head>
   <body>
     <div class="container">
-      <div class="weatherapp">
-        <form id="search-form" class="mb-3">
-          <div class="row">
-            <div class="col-9">
-              <input
-                type="search"
-                placeholder="Type a city.."
-                class="form-control"
-                id="city-input"
-                autocomplete="off"
-              />
-            </div>
-            <div class="col-3">
-              <input
-                type="submit"
-                value="Search"
-                class="btn btn-primary w-100"
-              />
-            </div>
-          </div>
-        </form>
-        <h1 id="city">Calgary</h1>
-        <ul>
-          <li id="date"></li>
-          <li id="description">Clear</li>
-        </ul>
-        <div class="row">
-          <div class="col-6">
-            <div class="d-flex weather-temperature">
-              <img
-                src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
-                alt="Clear"
-                id="icon"
-              />
-              <div>
-                <strong id="temperature">12</strong
-                ><span class="units"
-                  ><a href="#" id="celcius" class="active">°C</a> |
-                  <a href="#" id="farenheit">°F</a></span
-                >
+      <div class="weather-app-wrapper">
+        <div class="weather-app">
+          <form id="search-form" class="mb-3">
+            <div class="row">
+              <div class="col-9">
+                <input
+                  type="search"
+                  placeholder="Type a city.."
+                  class="form-control"
+                  id="city-input"
+                  autocomplete="off"
+                />
+              </div>
+              <div class="col-3">
+                <input
+                  type="submit"
+                  value="Search"
+                  class="btn btn-primary w-100"
+                />
               </div>
             </div>
+          </form>
+          <h1 id="city">Calgary</h1>
+          <ul>
+            <li id="date"></li>
+            <li id="description">Clear</li>
+          </ul>
+          <div class="row">
+            <div class="col-6">
+              <div class="d-flex weather-temperature">
+                <img
+                  src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
+                  alt="Clear"
+                  id="icon"
+                />
+                <div>
+                  <strong id="temperature">12</strong
+                  ><span class="units"
+                    ><a href="#" id="celcius" class="active">°C</a> |
+                    <a href="#" id="farenheit">°F</a></span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <ul>
+                <li>Humidity: <span id="humidity"></span>%</li>
+                <li>Wind Speed: <span id="windspeed"></span>km/hr</li>
+              </ul>
+            </div>
           </div>
 
-          <div class="col-6">
-            <ul>
-              <li>Humidity: <span id="humidity"></span>%</li>
-              <li>Wind Speed: <span id="windspeed"></span>km/hr</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="weather-forecast" id="forecast">
+          <div class="weather-forecast" id="forecast">
           <div class="row">
             <div class="col-2">
               <div class="weather-forecast-date">Thu</div>
@@ -79,7 +80,7 @@
                 alt=""
                 width="36px"
               />
-              <div class="weather-forecast-temperature">
+              <div class="weather-forecast-temperatures">
                 <span class="weather-forecast-temperature-max">18</span>
                 <span class="weather-forecast-temperature-min">12</span>
               </div>

@@ -23,7 +23,8 @@ function formatDate(timestamp) {
 
 //start forecast script
 //
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
   let days = ["Tue", "Wed", "Thur", "Fri", "Sat"];
   //
@@ -37,9 +38,9 @@ function displayForecast() {
               <img
                 src="http://openweathermap.org/img/wn/50d@2x.png"
                 alt=""
-                width="36px"
+                width="42px"
               />
-              <div class="weather-forecast-temperature">
+              <div class="weather-forecast-temperatures">
                 <span class="weather-forecast-temperature-max">18</span>
                 <span class="weather-forecast-temperature-min">12</span>
               </div>
@@ -56,7 +57,7 @@ function displayForecast() {
 function getForecast(coordinates) {
   console.log(coordinates);
   let apiKey = "b1a8336ff1e05b64da5625e4158fbea3";
-  let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
 
   axios.get(apiUrl).then(displayForecast);
 }
@@ -128,5 +129,3 @@ farenheitLink.addEventListener("click", displayFarenheitTemperature);
 
 let celciusLink = document.querySelector("#celcius");
 celciusLink.addEventListener("click", displayCelciusTemperature);
-
-displayForecast();
