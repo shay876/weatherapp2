@@ -58,10 +58,10 @@ function displayForecast(response) {
               <div class="weather-forecast-temperatures">
                 <span class="weather-forecast-temperature-max">High: ${Math.round(
                   forecastDay.temp.max
-                )}° </span>
+                )}°C </span>
                 <span class="weather-forecast-temperature-min">Low: ${Math.round(
                   forecastDay.temp.min
-                )}° </span>
+                )}°C </span>
               </div>
             </div>
           `;
@@ -122,30 +122,7 @@ function search(city) {
   axios.get(apiUrl).then(displayTemperature);
 }
 
-function displayFarenheitTemperature(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  celciusLink.classList.remove("active");
-  farenheitLink.classList.add("active");
-  let farenheitTemperature = (celciusTemperature * 9) / 5 + 32;
-  temperatureElement.innerHTML = Math.round(farenheitTemperature);
-}
-
-function displayCelciusTemperature(event) {
-  event.preventDefault();
-  celciusLink.classList.add("active");
-  farenheitLink.classList.remove("active");
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(celciusTemperature);
-}
-
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
 let celciusTemperature = null;
-
-let farenheitLink = document.querySelector("#farenheit");
-farenheitLink.addEventListener("click", displayFarenheitTemperature);
-
-let celciusLink = document.querySelector("#celcius");
-celciusLink.addEventListener("click", displayCelciusTemperature);
